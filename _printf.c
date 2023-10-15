@@ -9,6 +9,22 @@
  * Return: number of  characters printed excluding the null byte used to end output to strings.
  * On error, -1 is returned.
  */
+
+
+void get_int(int num)
+{
+	int n;
+
+	if (num == 0)
+		return;
+
+	n = num / 10;
+
+	get_int(n);
+	putchar(num%10 + '0');
+
+	return;
+}
 int _printf(const char *format, ...)
 {
 	va_list argument;
@@ -39,11 +55,11 @@ int _printf(const char *format, ...)
 			switch (format[length])
 			{
 			    case 'd':
-					handle_int(va_arg(argument, int));
+					get_int(va_arg(argument, int));
 					n++;
 					break;
 			    case 'i':
-					handle_int(va_arg(argument, int));
+					get_int(va_arg(argument, int));
 					n++;
 					break;
 				case '%':

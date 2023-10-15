@@ -9,6 +9,6 @@
  */
 int main(void)
 {
-    _putchar('c');
+    _printf("%d",15);
     return 0;
 }
