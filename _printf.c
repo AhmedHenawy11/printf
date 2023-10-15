@@ -12,9 +12,9 @@
 
 int _printf(const char *format, ...)
 {
-	va_list argument;
 	int n = 0, i = 0, length = 0;
 	char *str;
+	va_list argument;
 
 	if (format == NULL)
 	{
