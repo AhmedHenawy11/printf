@@ -48,7 +48,7 @@ int _printf(const char *format, ...)
 				case 's':
 					str = va_arg(argument, char*);
 
-					while (str)
+					while (str[i] != '\0')
 					{
 						i++;
 					}
