@@ -12,16 +12,18 @@
 
 int _printf(const char *format, ...)
 {
+	va_list argument;
 	int n = 0, i = 0, length = 0;
 	char *str;
-	va_list argument;
 
 	if (format == NULL)
 	{
 		return (-1);
 	}
+
 	va_start(argument, format);
-	while (format[length] != '\0')
+
+	while (format[length] != '\0' && format != '\0')
 	{
 		if (format[length] != '%')
 		{
@@ -50,14 +52,18 @@ int _printf(const char *format, ...)
 					write(1, str, i);
 					n += i;
 					break;
-				default:
-					_putchar('%');
-					_putchar(format[length]);
-					n += 1;
-					break;
-			}
+				case ' ':
+				    return (-1);
+                default:
+                    // Handle unknown format specifiers
+                    _putchar('%');
+                    _putchar(format[length]);
+                    n += 1;
+                    break;
+            }
+			
 		}
-		length++;
+		length ++;
 	}
 	va_end(argument);
 	return (n);
