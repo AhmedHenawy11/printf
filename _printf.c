@@ -9,7 +9,6 @@
  * Return: number of  characters printed excluding the null byte used to end output to strings.
  * On error, -1 is returned.
  */
-
 int _printf(const char *format, ...)
 {
 	va_list argument;
@@ -40,11 +39,11 @@ int _printf(const char *format, ...)
 			switch (format[length])
 			{
 			    case 'd':
-					_putchar(va_arg(argument, int));
+					handle_int(va_arg(argument, int));
 					n++;
 					break;
 			    case 'i':
-					_putchar(va_arg(argument, int));
+					handle_int(va_arg(argument, int));
 					n++;
 					break;
 				case '%':
@@ -72,7 +71,6 @@ int _printf(const char *format, ...)
                     n += 1;
                     break;
             }
-			
 		}
 		length ++;
 	}
