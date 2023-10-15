@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 
 	va_start(argument, format);
 
-	while (format[length] != '\0' && format != '\0')
+	while (format[length] != '\0')
 	{
 		if (format[length] != '%')
 		{
@@ -55,7 +55,6 @@ int _printf(const char *format, ...)
 				case ' ':
 				    return (-1);
                 default:
-                    // Handle unknown format specifiers
                     _putchar('%');
                     _putchar(format[length]);
                     n += 1;
