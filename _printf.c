@@ -56,6 +56,10 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(argument, char*);
+					if ( str == NULL)
+					{
+						str = "(null)";
+					}
 					while (str[i] != '\0')
 					{
 						i++;
@@ -63,6 +67,8 @@ int _printf(const char *format, ...)
 					write(1, str, i);
 					n += i;
 					break;
+				case ' ':
+					return (-1);
 				default:
 					_putchar('%');
 					_putchar(format[length]);
