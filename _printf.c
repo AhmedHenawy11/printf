@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 
 	va_start(argument, format);
 
-	while (format[length])
+	while (format[length] != "\0")
 	{
 		if (format[length] != '%')
 		{
@@ -38,11 +38,6 @@ int _printf(const char *format, ...)
 			{
 				case '%':
 					write(1, &format[length], 1);
-					n++;
-					break;
-				case 'd':
-					num = va_arg(argument, int);
-					write(1, &num, 1);
 					n++;
 					break;
 				case 'c':
