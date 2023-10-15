@@ -50,14 +50,14 @@ int _printf(const char *format, ...)
 					write(1, str, i);
 					n += i;
 					break;
-                default:
-                    _putchar('%');
-                    _putchar(format[length]);
-                    n += 1;
-                    break;
-            }
+				default:
+					_putchar('%');
+					_putchar(format[length]);
+					n += 1;
+					break;
+			}
 		}
-		length ++;
+		length++;
 	}
 	va_end(argument);
 	return (n);
