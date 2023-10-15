@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
@@ -9,6 +8,26 @@
  * Return: number of  characters printed excluding the null byte used to end output to strings.
  * On error, -1 is returned.
  */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+void get_int(int num)
+{
+	int n;
+
+	if (num == 0)
+		return;
+
+	n = num / 10;
+
+	get_int(n);
+	putchar(num%10 + '0');
+
+	return;
+}
+
 int _printf(const char *format, ...)
 {
 	va_list argument;
@@ -38,11 +57,11 @@ int _printf(const char *format, ...)
 			length++;
 			switch (format[length])
 			{
-			    case 'd':
+				case 'd':
 					handle_int(va_arg(argument, int));
 					n++;
 					break;
-			    case 'i':
+				case 'i':
 					handle_int(va_arg(argument, int));
 					n++;
 					break;
@@ -56,6 +75,10 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(argument, char*);
+					if ( str == NULL)
+					{
+						str = "(null)";
+					}
 					while (str[i] != '\0')
 					{
 						i++;
@@ -64,16 +87,21 @@ int _printf(const char *format, ...)
 					n += i;
 					break;
 				case ' ':
-				    return (-1);
-                default:
-                    _putchar('%');
-                    _putchar(format[length]);
-                    n += 1;
-                    break;
-            }
+					return (-1);
+				default:
+					_putchar('%');
+					_putchar(format[length]);
+					n += 1;
+					break;
+			}
 		}
-		length ++;
+		length++;
 	}
 	va_end(argument);
 	return (n);
+}
+
+int main ()
+{
+    _printf("gf%i",20);
 }
