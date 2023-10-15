@@ -1,77 +1,60 @@
 #include "main.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
-/**
- * _printf - writes the character to stdout
- * @format: the specifier char that determine the type of data to be printed
- * Description: we make our printf function AHMED @ ALAA
- * Return: number of  characters printed excluding the null byte used to end output to strings.
- * On error, -1 is returned.
- */
 
+/**
+ * _printf - my printf function
+ *
+ * @format: the string should print
+ * Return: an intager
+ */
 int _printf(const char *format, ...)
 {
-	va_list argument;
-	int n = 0, i = 0, length = 0;
-	char *str;
+int j = 0, count = 0;
+va_list list;
 
-	if (format == NULL)
-	{
-		return (-1);
-	}
+if (format == NULL)
+{
+return (-1);
+}
 
-	va_start(argument, format);
+va_start(list, format);
 
-	while (format[length] != '\0')
-	{
-		if (format[length] != '%')
-		{
-			write(1, &format[length], 1);
-			n++;
-		}
-		else
-		{
-			length++;
-			switch (format[length])
-			{
-			    case 'd':
-					_putchar(va_arg(argument, int));
-					n++;
-					break;
-			    case 'i':
-					_putchar(va_arg(argument, int));
-					n++;
-					break;
-				case '%':
-					_putchar(format[length]);
-					n++;
-					break;
-				case 'c':
-					_putchar(va_arg(argument, int));
-					n++;
-					break;
-				case 's':
-					str = va_arg(argument, char*);
-					while (str[i] != '\0')
-					{
-						i++;
-					}
-					write(1, str, i);
-					n += i;
-					break;
-				case ' ':
-				    return (-1);
-                default:
-                    _putchar('%');
-                    _putchar(format[length]);
-                    n += 1;
-                    break;
-            }
-			
-		}
-		length ++;
-	}
-	va_end(argument);
-	return (n);
+while (format[j] != '\0')
+{
+if (format[j] != '%')
+{
+write(1, &format[j], 1);
+count++;
+}
+else
+{
+j++;
+if (format[j] == '%')
+{
+write(1, &format[j], 1);
+count++;
+}
+else if (format[j] == 'c')
+{
+char c = va_arg(list, int);
+write(1, &c, 1);
+count++;
+}
+else if (format[j] == 's')
+{
+int i = 0;
+char *string = va_arg(list, char*);
+
+while (string[i] != '\0')
+{
+i++;
+}
+
+write(1, string, i);
+count += i;
+}
+}
+j++;
+}
+va_end(list);
+return (count);
 }
