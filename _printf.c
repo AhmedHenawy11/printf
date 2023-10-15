@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argument;
-	int n = 0, c = 0;
+	int n = 0, i = 0;
 
 	if (format == NULL)
 	{
@@ -37,7 +37,8 @@ int _printf(const char *format, ...)
 					n++;
 					break;
 				case 'c':
-					__putchar(va_arg(argument, int));
+					char c = va_arg(argument, int);
+					write(1, &c, 1);
 					n++;
 					break;
 				case 's':
@@ -45,14 +46,14 @@ int _printf(const char *format, ...)
 
 					while (str)
 					{
-						c++;
+						i++;
 					}
-					write(1, str, c);
+					write(1, str, i);
 					n += c;
 					break;
 			}
 		}
 	}format ++;
 	va_end(argument);
-	return (c);
+	return (n);
 }
