@@ -13,7 +13,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argument;
-	int n = 0, i = 0, length = 0, num;
+	int n = 0, i = 0, length = 0;
 	char c;
 	char *str;
 
