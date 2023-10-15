@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdarg.h>
 /**
  * _printf - writes the character to stdout
  * @format: the specifier char that determine the type of data to be printed
@@ -10,50 +13,56 @@
 int _printf(const char *format, ...)
 {
 	va_list argument;
-	int n = 0, i = 0;
+	int n = 0, i = 0, length = 0, num;
+	char c;
+	char *str;
 
 	if (format == NULL)
 	{
 		return (-1);
 	}
+	
 	va_start(argument, format);
-	while (*format)
+
+	while (format[length])
 	{
-		if (*format != "\0")
+		if (format[length] != '%')
 		{
-			_putchar(*format);
+			write(1, &format[length], 1);
 			n++;
 		}
 		else
 		{
-			switch (*++format)
+			length++;
+			switch (format[length])
 			{
 				case '%':
-					_putchar('%');
+					write(1, &format, 1);
 					n++;
 					break;
 				case 'd':
-					__putchar(va_arg(argument, int));
+					num = va_arg(argument, int);
+					write(1, &num, 1);
 					n++;
 					break;
 				case 'c':
-					char c = va_arg(argument, int);
+					c = va_arg(argument, int);
 					write(1, &c, 1);
 					n++;
 					break;
 				case 's':
-					char *str = va_arg(argument, char*);
+					str = va_arg(argument, char*);
 
 					while (str)
 					{
 						i++;
 					}
 					write(1, str, i);
-					n += c;
+					n += i;
 					break;
 			}
 		}
-	}format ++;
+	}length++;
 	va_end(argument);
 	return (n);
 }
