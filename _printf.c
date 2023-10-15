@@ -13,7 +13,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argument;
-	int n = 0, i = 0, length = 0;
+	int n = 0, i = 0, length = 0, num;
 	char *str;
 
 	if (format == NULL)
@@ -36,11 +36,13 @@ int _printf(const char *format, ...)
 			switch (format[length])
 			{
 			    case 'd':
-					_putchar(va_arg(argument, int));
+			        num += va_arg(argument, int);
+					_putchar(num);
 					n++;
 					break;
 			    case 'i':
-					_putchar(va_arg(argument, int));
+			        num += va_arg(argument, int);
+					_putchar(num);
 					n++;
 					break;
 				case '%':
