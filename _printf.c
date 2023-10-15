@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 	{
 		return (-1);
 	}
-	
+
 	va_start(argument, format);
 
 	while (format[length])
@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 			switch (format[length])
 			{
 				case '%':
-					write(1, &format, 1);
+					write(1, &format[length], 1);
 					n++;
 					break;
 				case 'd':
