@@ -38,14 +38,6 @@ int _printf(const char *format, ...)
 			length++;
 			switch (format[length])
 			{
-				case 'd':
-					handle_int(va_arg(argument, int));
-					n++;
-					break;
-				case 'i':
-					handle_int(va_arg(argument, int));
-					n++;
-					break;
 				case '%':
 					_putchar(format[length]);
 					n++;
