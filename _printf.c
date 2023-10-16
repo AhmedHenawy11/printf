@@ -50,7 +50,8 @@ int _printf(const char *format, ...)
 					n++;
 					break;
 				case 'c':
-					_putchar(va_arg(argument, int));
+					char c = va_arg(argument, int);
+					_putchar(c);
 					n++;
 					break;
 				case 's':
