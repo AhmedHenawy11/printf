@@ -11,15 +11,15 @@
  */
 int _printf(const char *format, ...)
 {
+	va_list argument;
 	int n = 0, i = 0, length = 0;
 	char *str;
-	char c;
-	va_list argument;
 
 	if (format == NULL)
 	{
 		return (-1);
 	}
+
 	va_start(argument, format);
 
 	while (format[length] != '\0')
@@ -51,8 +51,7 @@ int _printf(const char *format, ...)
 					n++;
 					break;
 				case 'c':
-					c = va_arg(argument, int);
-					_putchar(c);
+					_putchar(va_arg(argument, int));
 					n++;
 					break;
 				case 's':
