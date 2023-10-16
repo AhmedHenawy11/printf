@@ -9,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argument;
-	int n = 0, i = 0, length = 0;
+	int n, i, length = 0;
 	char *str;
 
 	if (format == NULL)
@@ -29,19 +29,16 @@ int _printf(const char *format, ...)
 			write(1, &format[length], 1);
 			n++;
 		}
+<<<<<<< HEAD
+=======
+		else if (format[length] == '%' && format[length + 1] == '\0')
+			return (-1);
+>>>>>>> 34ddb3a2d2993c83a4a7926c4bf25b363460bbcc
 		else
 		{
 			length++;
 			switch (format[length])
 			{
-				case 'd':
-					handle_int(va_arg(argument, int));
-					n++;
-					break;
-				case 'i':
-					handle_int(va_arg(argument, int));
-					n++;
-					break;
 				case '%':
 					_putchar(format[length]);
 					n++;
@@ -52,7 +49,7 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(argument, char*);
-					if ( str == NULL)
+					if (str == NULL)
 					{
 						str = "(null)";
 					}
@@ -63,6 +60,14 @@ int _printf(const char *format, ...)
 					write(1, str, i);
 					n += i;
 					break;
+<<<<<<< HEAD
+=======
+				default:
+					_putchar('%');
+					_putchar(format[length]);
+					n += 1;
+					break;
+>>>>>>> 34ddb3a2d2993c83a4a7926c4bf25b363460bbcc
 			}
 		}
 		length++;
