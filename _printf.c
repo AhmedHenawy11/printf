@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 					break;
 				case 's':
 					str = va_arg(argument, char*);
-					if ( str == NULL)
+					if (str == NULL)
 					{
 						str = "(null)";
 					}
