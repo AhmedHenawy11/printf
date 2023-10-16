@@ -31,8 +31,6 @@ int _printf(const char *format, ...)
 		}
 		else if (format[length] == '%' && format[length + 1] == '\0')
 			return (-1);
-		else if (format[i] == '\0')
-			return (n);
 		else
 		{
 			length++;
