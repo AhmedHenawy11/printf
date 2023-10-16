@@ -12,15 +12,11 @@ int _printf(const char *format, ...)
 	int n, i, length = 0;
 	char *str;
 
-	if (format == NULL)
-	{
-		return (-1);
-	}
 	va_start(argument, format);
 	/* error check */
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))/* check if NULL char */
 		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && format[2] = '\0')/* check for only % in code */
+	if (format[0] == '%' && format[1] == ' ' && !format[2])/* check for only % in code */
 		return (-1);
 	while (format[length] != '\0')
 	{
@@ -29,16 +25,19 @@ int _printf(const char *format, ...)
 			write(1, &format[length], 1);
 			n++;
 		}
-<<<<<<< HEAD
-=======
-		else if (format[length] == '%' && format[length + 1] == '\0')
-			return (-1);
->>>>>>> 34ddb3a2d2993c83a4a7926c4bf25b363460bbcc
 		else
 		{
 			length++;
 			switch (format[length])
 			{
+				case 'i':
+					handle_int(va_arg(argument, int));
+					n++;
+					break;
+				case 'd':
+					handle_int(va_arg(argument, int));
+					n++;
+					break;
 				case '%':
 					_putchar(format[length]);
 					n++;
@@ -60,19 +59,19 @@ int _printf(const char *format, ...)
 					write(1, str, i);
 					n += i;
 					break;
-<<<<<<< HEAD
-=======
 				default:
 					_putchar('%');
 					_putchar(format[length]);
 					n += 1;
 					break;
->>>>>>> 34ddb3a2d2993c83a4a7926c4bf25b363460bbcc
 			}
 		}
 		length++;
 	}
 	va_end(argument);
+	
+	if (n < 0)
+		return (-10);
 
 	return (n);
 }
