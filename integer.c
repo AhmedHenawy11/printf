@@ -10,7 +10,7 @@ void handle_int(int number)
 	n = number / 10;
 
 	handle_int(n);
-	_putchar(number%10 + '0');
+	_putchar(number % 10 + '0');
 
 	return;
 }

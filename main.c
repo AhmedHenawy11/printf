@@ -9,6 +9,6 @@
  */
 int main(void)
 {
-    _printf("%d",15);
+    _printf("(1 + 2) = %d, 2 + 2 = %i\n", 1 + 2, 2 + 2);
     return 0;
 }
