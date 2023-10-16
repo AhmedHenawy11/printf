@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 {
 	int n = 0, i = 0, length = 0;
 	char *str;
+	char c;
 	va_list argument;
 
 	if (format == NULL)
@@ -50,7 +51,7 @@ int _printf(const char *format, ...)
 					n++;
 					break;
 				case 'c':
-					char c = va_arg(argument, int);
+					c = va_arg(argument, int);
 					_putchar(c);
 					n++;
 					break;
