@@ -11,15 +11,11 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list argument;
 	int n = 0, i = 0, length = 0;
 	char *str;
+	va_list argument;
 
 	if (format == NULL)
-	{
-		return (-1);
-	}
-	else if (format[length] == '%' && format[length + 1] == '\0')
 	{
 		return (-1);
 	}
@@ -32,6 +28,8 @@ int _printf(const char *format, ...)
 			write(1, &format[length], 1);
 			n++;
 		}
+		else if (format[length] == '%' && format[length + 1] == '\0')
+			return (-1);
 		else if (format[i] == '\0')
 			return (n);
 		else
