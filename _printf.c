@@ -56,14 +56,7 @@ int _printf(const char *format, ...)
 		}
 		count++;
 	}
-<<<<<<< HEAD
 	va_end(ptr);
-=======
-	va_end(argument);
-
-	if (n < 0)
-		return (-10);
->>>>>>> b6b959c57cb1a908f4c67fe973216c79f9c33935
 
 	return (length);
 }
