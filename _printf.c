@@ -59,8 +59,6 @@ int _printf(const char *format, ...)
 					write(1, str, i);
 					n += i;
 					break;
-				case ' ':
-					return (-1);
 				default:
 					_putchar('%');
 					_putchar(format[length]);
@@ -71,7 +69,7 @@ int _printf(const char *format, ...)
 		length++;
 	}
 	va_end(argument);
-	
+
 	if (n < 0)
 		return (-10);
 
