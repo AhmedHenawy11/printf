@@ -6,6 +6,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+<<<<<<< HEAD
+=======
+#define BUFF_SIZE 1024
+#define BUFF_AGAIN -1
+int _putchar(char c);
+int print_c(va_list arg);
+>>>>>>> b6b959c57cb1a908f4c67fe973216c79f9c33935
 int _printf(const char *format, ...);
 int _putchar(char c);
 int _print_character(va_list arg);
