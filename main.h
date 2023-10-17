@@ -10,6 +10,6 @@
 int _printf(const char *format, ...);
 int _putchar(char c);
 void handle_int(int);
-int _print_integer(va_list arg);
+int _print_integer(int);
 
 #endif

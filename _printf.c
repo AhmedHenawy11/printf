@@ -32,8 +32,7 @@ int _printf(const char *format, ...)
 			{
 				case 'i':
 				case 'd':
-
-					handle_int(va_arg(argument, int));
+					_print_integer(va_arg(argument, int));
 					break;
 				case '%':
 					_putchar(format[length]);
