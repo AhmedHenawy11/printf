@@ -10,7 +10,7 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int _print_character(va_list arg);
 int _print_str(va_list arg);
-int _print_perc_(va_list __attribute__((unused)) arg);
+int _print_perc_(va_list arg);
 int _print_integer(va_list arg);
 
 /**

@@ -4,8 +4,9 @@
  * @arg: va-list unused input
  * Return: 1 ==> Number of character
  */
-int _print_perc_(va_list __attribute__((unused)) arg)
+int _print_perc_(va_list arg)
 {
+	(void) arg;
 	_putchar('%');
 
 	return (1);
