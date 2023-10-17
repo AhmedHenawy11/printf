@@ -4,12 +4,12 @@
  * @arg: va_list input
  * Return: length ==> number of character printed
  */
-int _print_integer(va_list arg)
+int _print_integer(int arg)
 {
 	int get_num, calc, length;
 	unsigned int number;
 
-	get_num = va_arg(arg, int);
+	get_num = arg;
 
 	calc = 1;
 	length = 0;
