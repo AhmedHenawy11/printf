@@ -1,73 +1,62 @@
 #include "main.h"
 /**
- * _printf - writes the character to stdout
- * @format: the specifier char that determine the type of data to be printed
- * Description: we make our printf function AHMED @ ALAA
- * Return: number of  characters printed excluding the null byte used to end output to strings.
- * On error, -1 is returned.
+ * _printf - function that produces output according to a format
+ * and print it to the stunderd output.
+ * @format: const char input.
+ * Return: the number of characters printed.
  */
 int _printf(const char *format, ...)
 {
-	va_list argument;
-	int n, i, length = 0;
-	char *str;
+	int length, count, j;
+	char ch;
+	va_list ptr;
 
-	va_start(argument, format);
-	/* error check */
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))/* check if NULL char */
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])/* check for only % in code */
-		return (-1);
-	while (format[length] != '\0')
+	s_struct s_st[] = {
+		{'c', _print_character},
+		{'s',  _print_str},
+		{'%', _print_perc_},
+		{'i', _print_integer},
+		{'d', _print_integer},
+		{0, NULL}
+	};
+	count = 0;
+	length = 0;
+
+	va_start (ptr, format);
+	while (format && format[count])
 	{
-		if (format[length] != '%')
+		ch = format[count];
+		if (ch == '%')
 		{
-			write(1, &format[length], 1);
-			n++;
+			count++;
+			ch = format[count];
+			j = 0;
+
+			while (s_st[j].ch != 0)
+			{
+				if (s_st[j].ch == ch)
+				{
+					length++;
+					s_st[j].func(ptr);
+					break;
+				}
+				j++;
+			}
+			if (s_st[j].ch == 0)
+			{
+				length++;
+				_putchar('%');
+				_putchar(ch);
+			}
 		}
 		else
 		{
 			length++;
-			switch (format[length])
-			{
-				case 'i':
-				case 'd':
-					n += _print_integer(va_arg(argument, int));
-					break;
-				case '%':
-					_putchar(format[length]);
-					n++;
-					break;
-				case 'c':
-					_putchar(va_arg(argument, int));
-					n++;
-					break;
-				case 's':
-					str = va_arg(argument, char*);
-					if (str == NULL)
-					{
-						str = "(null)";
-					}
-					while (str[i] != '\0')
-					{
-						i++;
-					}
-					write(1, str, i);
-					n += i;
-					break;
-				default:
-					_putchar('%');
-					_putchar(format[length]);
-					n += 1;
-					break;
-			}
+			_putchar(ch);
 		}
-		length++;
+		count++;
 	}
-	va_end(argument);
+	va_end(ptr);
 
-	if (n < 0)
-		return (-1);
-
-	return (n);
+	return (length);
 }
