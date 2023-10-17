@@ -59,6 +59,8 @@ int _printf(const char *format, ...)
 					write(1, str, i);
 					n += i;
 					break;
+				case ' ':
+					return (-1);
 				default:
 					_putchar('%');
 					_putchar(format[length]);
