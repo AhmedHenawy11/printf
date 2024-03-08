@@ -14,6 +14,7 @@ int (*get_fun(char ch))(va_list ptr)
 		{'s', print_str},
 		{'d', print_int},
 		{'i', print_int},
+		{'b', print_binary},
 		{'\0', NULL}
 	};
 	int i = 0;

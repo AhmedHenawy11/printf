@@ -97,3 +97,46 @@ int print_int(va_list ptr)
 
 	return (count);
 }
+
+/**
+ * print_binary - deal with int args
+ * @ptr: va_list pointer to the last arg
+ *
+ * Return: count
+ */
+int print_binary(va_list ptr)
+{
+	unsigned int num, count;
+
+	num = va_arg(ptr, unsigned int);
+
+	count = print_br(num);
+
+	return (count);
+}
+
+/**
+ * print_br - helper function to help in print binary num
+ * @num: number to be printed
+ *
+ * Return: count of printed chars.
+ */
+int print_br(unsigned int num)
+{
+	char char_put;
+	int count = 0;
+
+	if (num == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
+	if (num >> 1 != 0)
+		count += print_br(num >> 1);
+
+	char_put = '0' + (num & 1);
+	write(1, &char_put, 1);
+	count++;
+
+	return (count);
+}

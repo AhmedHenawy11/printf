@@ -26,5 +26,7 @@ int case_null(char ch);
 int print_char(va_list ptr);
 int print_str(va_list ptr);
 int print_int(va_list ptr);
+int print_binary(va_list ptr);
+int print_br(unsigned int num);
 
 #endif
