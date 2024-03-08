@@ -31,12 +31,8 @@ int _printf(const char *format, ...)
 			switch (format[length])
 			{
 				case 'i':
-					handle_int(va_arg(argument, int));
-					n++;
-					break;
 				case 'd':
-					handle_int(va_arg(argument, int));
-					n++;
+					n += _print_integer(va_arg(argument, int));
 					break;
 				case '%':
 					_putchar(format[length]);
@@ -71,7 +67,7 @@ int _printf(const char *format, ...)
 	va_end(argument);
 
 	if (n < 0)
-		return (-10);
+		return (-1);
 
 	return (n);
 }
