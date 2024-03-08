@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * null_case - deals with instances where function pointer points to null
- * @ch: the char being passed
+ * case_null - function to deal with null case.
+ * @ch: char being passed
  *
  * Return: a count
  */

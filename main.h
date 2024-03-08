@@ -8,7 +8,14 @@
 #include <limits.h>
 #include <unistd.h>
 
-typedef struct opreation{
+/**
+ * struct opreation - Represents a character-operation mapping
+ * @c: The character to match
+ * @f: A pointer to the corresponding function
+ */
+
+typedef struct opreation
+{
 	char c;
 	int (*f)(va_list);
 } op_t;

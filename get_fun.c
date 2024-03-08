@@ -1,6 +1,10 @@
 #include "main.h"
 
 /**
+ * get_fun - get the required fun to print the arg.
+ * @ch: char to get the required fun
+ *
+ * Return: name of fun
  */
 
 int (*get_fun(char ch))(va_list ptr)

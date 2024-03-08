@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * _printf - a copy of printf function.
+ * @format: char pointer to a word to print.
+ * @...: elisipes. the args to be printed
+ *
+ * Return: count of printed chars
+ */
 int _printf(const char *format, ...)
 {
 	va_list ptr;

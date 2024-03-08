@@ -1,6 +1,11 @@
 #include "main.h"
 
 /**
+ * print_char - deal with char arguments
+ *
+ * @ptr: va_list pointer to last argument.
+ *
+ * Return: count
  */
 int print_char(va_list ptr)
 {
@@ -14,10 +19,10 @@ int print_char(va_list ptr)
 }
 
 /**
- * print_str - prints a string
- * @vl: an argument from a variadic argument list
+ * print_str - deal with str args
+ * @ptr: va_list pointer to the last arg
  *
- * Return: the count of characters
+ * Return: count
  */
 int print_str(va_list ptr)
 {
@@ -49,6 +54,12 @@ int print_str(va_list ptr)
 	return (count);
 }
 
+/**
+ * print_int - deal with int args
+ * @ptr: va_list pointer to the last arg
+ *
+ * Return: count
+ */
 int print_int(va_list ptr)
 {
 	int n, count, dev;
@@ -83,6 +94,6 @@ int print_int(va_list ptr)
 		dev /= 10;
 		count++;
 	}
-		
+
 	return (count);
 }
